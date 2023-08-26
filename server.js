@@ -2,6 +2,7 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
+const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
@@ -28,6 +29,7 @@ const checkIfUserExists = require('./middleware/isauthenticated');
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 // ROUTES
 // Register
